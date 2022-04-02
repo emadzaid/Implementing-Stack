@@ -1,73 +1,72 @@
- #include <iostream>
-
+#include <iostream>
 using namespace std;
 
-int stack[10]; int top = -1; int n = 10;
-
-void push(int x)
+struct stack
 {
-    if(top >= n-1)
-        cout << "Stack overflow...\n";
-    else{
-        top++;
-        stack[top] = x;
-    }
-}
-
-void pop()
-{
-    if(top <= -1)
+    int n = 10;;
+    int stack[10];
+    int top = -1;
+   
+    void push(int x)
     {
-        cout << "Stack underflow...\n";
-    }
-    else{
-        cout << "The element popped is: " << stack[top] << endl;
-        top--;
-    }
-    cout << endl;
-}
-void displayStack()
-{
-     int i = top;
-    if(top>=0)
-    {
-        while(i >= 0)
-        {
-            cout << "| " << stack[i] <<" |" << endl;
-            i--;
+        if(top >= n-1)
+            cout << "Stack overflow...\n";
+        else{
+            top++;
+            stack[top] = x;
         }
     }
-    else
-    {
-        cout << "Stack is empty";
-    }
     
-    cout << endl;
-}
+    void pop()
+    {
+        if(top <= -1)
+        {
+            cout << "Stack underflow...\n";
+        }
+        else{
+            cout << "The element popped is: " << stack[top] << endl;
+            top--;
+        }
+        cout << endl;
+    }
+    void displayStack()
+    {
+         int i = top;
+        if(top>=0)
+        {
+            while(i >= 0)
+            {
+                cout << "| " << stack[i] <<" |" << endl;
+                i--;
+            }
+        }
+        else
+        {
+            cout << "Stack is empty";
+        }
+        
+        cout << endl;
+    }
+
+};
+
 
 int main()
 {
-    push(13);
-    push(17);
-    push(23);
-    push(15);
-    push(19);
-    push(10);
-    
+    struct stack s;
 
-    displayStack();
+    s.push(1);
+    s.push(9);
+    s.push(6);
+    s.push(7);
+    s.push(3);
+    s.push(4);
     
-    pop();
-    pop();
-    pop();
-    pop();
+    s.displayStack();
     
-    displayStack();
+    s.pop();
+    s.pop();
     
-    pop();
-    pop();
-    
-    pop();
     cout <<  endl;
     return 0;
 }
